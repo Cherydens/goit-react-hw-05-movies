@@ -67,6 +67,29 @@ async function fetchMovieById(id) {
 }
 
 /**
+ * Отримує акторів до фільму за ID
+ * @param {String} id
+ * @returns {Promise} response data
+ */
+async function fetchMovieCastById(id) {
+  const response = await axios.get(
+    `${BASE_URL}${BY_ID_ENDPOINT}/${id}/credits?api_key=${API_KEY}&language=${LANGUAGE}`
+  );
+  return response.data;
+}
+/**
+ * Отримує обзори до фільму за ID
+ * @param {String} id
+ * @returns {Promise} response data
+ */
+async function fetchMovieReviewsById(id) {
+  const response = await axios.get(
+    `${BASE_URL}${BY_ID_ENDPOINT}/${id}/reviews?api_key=${API_KEY}&language=${LANGUAGE}`
+  );
+  return response.data;
+}
+
+/**
  * Отримує фільми за пошуковим запитом
  * @param {String} searchQuery
  * @param {String || Number} page
@@ -126,4 +149,6 @@ export {
   fetchMovieBySearchQueryAndYear,
   fetchMovieVideosById,
   fetchGenresList,
+  fetchMovieCastById,
+  fetchMovieReviewsById,
 };

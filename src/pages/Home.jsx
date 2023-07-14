@@ -1,3 +1,4 @@
+import MovieList from 'components/MovieList/MovieList';
 import { useEffect, useState } from 'react';
 import { fetchDayTrends } from 'services/movieApiService';
 
@@ -21,18 +22,5 @@ export default function Home() {
       setStatus('rejected');
     }
   };
-  return (
-    <main>
-      {status === 'resolved' && (
-        <>
-          <h1>Trending today</h1>
-          <ul>
-            {dayTrends.map(dayTrend => (
-              <li key={dayTrend.id}>{dayTrend.title}</li>
-            ))}
-          </ul>
-        </>
-      )}
-    </main>
-  );
+  return <>{status === 'resolved' && <MovieList dayTrends={dayTrends} />}</>;
 }

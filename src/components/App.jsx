@@ -1,29 +1,25 @@
 import { Route, Routes } from 'react-router-dom';
 
-import Movies from 'pages/Movies/Movies';
-import Home from 'pages/Home/Home';
-import { Container, Header, NavMenu, StyledLink } from './App.styled';
-import MovieDetails from 'pages/MovieDetails/MovieDetails';
+import Home from 'pages/Home';
+import Movies from 'pages/Movies';
+import MovieDetails from 'pages/MovieDetails';
+import Layout from './Layout/Layout';
+import Cast from './Cast/Cast';
+import Reviews from './Reviews/Reviews';
 
 export const App = () => {
   return (
-    <Container>
-      <Header>
-        <NavMenu>
-          <StyledLink to="/" end>
-            Home
-          </StyledLink>
-          <StyledLink to="/movies">Movies</StyledLink>
-        </NavMenu>
-      </Header>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MovieDetails />} />
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="movies" element={<Movies />} />
+        <Route path="movies/:movieId" element={<MovieDetails />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
+        </Route>
 
         <Route path="*" element={<Home />} />
-      </Routes>
-    </Container>
+      </Route>
+    </Routes>
   );
 };

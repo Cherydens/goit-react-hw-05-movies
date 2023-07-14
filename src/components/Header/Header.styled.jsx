@@ -1,15 +1,7 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
-export const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 16px;
-  justify-items: center;
-  padding-bottom: 24px;
-`;
-
-export const Header = styled.header`
+export const HeaderStyled = styled.header`
   top: 0;
   left: 0;
   position: sticky;
@@ -27,7 +19,7 @@ export const Header = styled.header`
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
 
-export const NavMenu = styled.nav`
+export const NavMenu = styled.ul`
   display: flex;
   gap: 12px;
 `;
