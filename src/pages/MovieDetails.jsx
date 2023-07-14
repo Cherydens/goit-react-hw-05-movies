@@ -1,7 +1,7 @@
 import MovieCard from 'components/MovieCard/MovieCard';
 import MovieNav from 'components/MovieNav/MovieNav';
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { fetchMovieById } from 'services/movieApiService';
 
 export default function MovieDetails() {
