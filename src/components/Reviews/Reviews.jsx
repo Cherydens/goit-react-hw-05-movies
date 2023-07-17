@@ -22,7 +22,7 @@ export default function Reviews() {
       const { results } = await fetchMovieReviewsById(id);
       console.log(results);
       if (results.length === 0) {
-        setStatus('rejected');
+        setStatus('notFound');
         return;
       }
       setReviews(results);
@@ -44,7 +44,7 @@ export default function Reviews() {
           ))}
         </ReviewsContainer>
       )}
-      {status === 'rejected' && (
+      {status === 'notFound' && (
         <NoReviewsContainer>
           We don't have any reviews for this movie.
         </NoReviewsContainer>

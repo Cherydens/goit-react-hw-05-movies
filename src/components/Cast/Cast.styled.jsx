@@ -18,3 +18,6 @@ export const CastCard = styled.li`
   flex-direction: column;
   gap: 8px;
 `;
+export const NoCastContainer = styled.div`
+  padding: 24px;
+`;

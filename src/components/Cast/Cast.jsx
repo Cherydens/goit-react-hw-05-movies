@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieCastById } from 'services/movieApiService';
-import { CastCard, CastContainer } from './Cast.styled';
+import { CastCard, CastContainer, NoCastContainer } from './Cast.styled';
+import noPhoto from '../../images/no-photo.jpg';
 
 export default function Cast() {
   const { movieId } = useParams();
@@ -17,6 +18,10 @@ export default function Cast() {
     try {
       const { cast } = await fetchMovieCastById(id);
       console.log(cast);
+      if (cast.length === 0) {
+        setStatus('notFound');
+        return;
+      }
       setCast(cast);
       setStatus('resolved');
     } catch (error) {
@@ -30,18 +35,26 @@ export default function Cast() {
         <CastContainer>
           {cast.map(({ credit_id, name, profile_path, character }) => (
             <CastCard key={credit_id}>
-              {profile_path && (
+              {profile_path ? (
                 <img
                   src={`https://image.tmdb.org/t/p/w500${profile_path}`}
                   alt={name}
                   width={120}
+                  height={180}
                 />
+              ) : (
+                <img src={noPhoto} alt={name} width={120} />
               )}
-              <p>{name}</p>
-              <p>Character: {character}</p>
+              {name && <p>{name}</p>}
+              {character && <p>Character: {character}</p>}
             </CastCard>
           ))}
         </CastContainer>
+      )}
+      {status === 'notFound' && (
+        <NoCastContainer>
+          We don't have any cast for this movie.
+        </NoCastContainer>
       )}
     </>
   );

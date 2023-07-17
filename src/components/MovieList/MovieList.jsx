@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import { MovieListStyled } from './MovieList.styled';
+import { MovieListLink, MovieListStyled } from './MovieList.styled';
 
 export default function MovieList({ dayTrends }) {
   return (
@@ -8,7 +7,7 @@ export default function MovieList({ dayTrends }) {
       <MovieListStyled>
         {dayTrends.map(({ id, title }) => (
           <li key={id}>
-            <Link to={`movies/${id}`}>{title}</Link>
+            <MovieListLink to={`movies/${id}`}>{title}</MovieListLink>
           </li>
         ))}
       </MovieListStyled>

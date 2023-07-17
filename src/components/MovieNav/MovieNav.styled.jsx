@@ -16,4 +16,7 @@ export const MovieNavMenu = styled.ul`
 export const MovieNavLink = styled(Link)`
   font-weight: 500;
   font-size: 16px;
+  &:hover {
+    color: #bd3e53;
+  }
 `;

@@ -15,6 +15,10 @@ export default function Home() {
     try {
       const { results } = await fetchDayTrends();
       console.log(results);
+      if (results.length === 0) {
+        setStatus('notFound');
+        return;
+      }
       setDayTrends(results);
       setStatus('resolved');
     } catch (error) {
@@ -22,5 +26,10 @@ export default function Home() {
       setStatus('rejected');
     }
   };
-  return <>{status === 'resolved' && <MovieList dayTrends={dayTrends} />}</>;
+  return (
+    <>
+      {status === 'resolved' && <MovieList dayTrends={dayTrends} />}
+      {status === 'notFound' && <div>We don't have any today trends.</div>}
+    </>
+  );
 }
