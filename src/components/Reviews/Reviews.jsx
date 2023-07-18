@@ -13,25 +13,27 @@ export default function Reviews() {
   const [status, setStatus] = useState('idle');
 
   useEffect(() => {
+    if (!movieId) return;
+
+    const getMovieById = async id => {
+      setStatus('pending');
+      try {
+        const { results } = await fetchMovieReviewsById(id);
+        if (results.length === 0) {
+          setStatus('notFound');
+          return;
+        }
+        setReviews(results);
+        setStatus('resolved');
+      } catch (error) {
+        console.error(error.message);
+        setStatus('rejected');
+      }
+    };
+
     getMovieById(movieId);
   }, [movieId]);
 
-  const getMovieById = async id => {
-    setStatus('pending');
-    try {
-      const { results } = await fetchMovieReviewsById(id);
-      console.log(results);
-      if (results.length === 0) {
-        setStatus('notFound');
-        return;
-      }
-      setReviews(results);
-      setStatus('resolved');
-    } catch (error) {
-      console.error(error.message);
-      setStatus('rejected');
-    }
-  };
   return (
     <>
       {status === 'resolved' && (

@@ -10,21 +10,26 @@ export default function MovieDetails() {
   const [status, setStatus] = useState('idle');
 
   useEffect(() => {
+    if (!movieId) return;
+
+    const getMovieById = async id => {
+      setStatus('pending');
+      try {
+        const result = await fetchMovieById(id);
+        if (!result) {
+          setStatus('notFound');
+          return;
+        }
+        setMovie(result);
+        setStatus('resolved');
+      } catch (error) {
+        console.error(error.message);
+        setStatus('rejected');
+      }
+    };
+
     getMovieById(movieId);
   }, [movieId]);
-
-  const getMovieById = async id => {
-    setStatus('pending');
-    try {
-      const result = await fetchMovieById(id);
-      console.log(result);
-      setMovie(result);
-      setStatus('resolved');
-    } catch (error) {
-      console.error(error.message);
-      setStatus('rejected');
-    }
-  };
 
   return (
     <>
@@ -35,6 +40,7 @@ export default function MovieDetails() {
           <Outlet />
         </>
       )}
+      {status === 'notFound' && <div>Movie not found.</div>}
     </>
   );
 }
