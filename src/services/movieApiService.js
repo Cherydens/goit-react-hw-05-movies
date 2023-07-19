@@ -25,7 +25,7 @@ const ADULT = 'false';
  */
 async function fetchDayTrends(page = 1) {
   const response = await axios.get(
-    `${BASE_URL}${TRENDING_DAY_ENDPOINT}?api_key=${API_KEY}&page=${page}&language=${LANGUAGE}`
+    `${TRENDING_DAY_ENDPOINT}?api_key=${API_KEY}&page=${page}&language=${LANGUAGE}`
   );
   return response.data;
 }
@@ -37,7 +37,7 @@ async function fetchDayTrends(page = 1) {
  */
 async function fetchWeekTrends(page = 1) {
   const response = await axios.get(
-    `${BASE_URL}${TRENDING_WEEK_ENDPOINT}?api_key=${API_KEY}&page=${page}&language=${LANGUAGE}`
+    `${TRENDING_WEEK_ENDPOINT}?api_key=${API_KEY}&page=${page}&language=${LANGUAGE}`
   );
   return response.data;
 }
@@ -49,7 +49,7 @@ async function fetchWeekTrends(page = 1) {
  */
 async function fetchUpcomingThisMonth(page = 1) {
   const response = await axios.get(
-    `${BASE_URL}${UPCOMING_ENDPOINT}?api_key=${API_KEY}&page=${page}&language=${LANGUAGE}`
+    `${UPCOMING_ENDPOINT}?api_key=${API_KEY}&page=${page}&language=${LANGUAGE}`
   );
   return response.data;
 }
@@ -61,7 +61,7 @@ async function fetchUpcomingThisMonth(page = 1) {
  */
 async function fetchMovieById(id) {
   const response = await axios.get(
-    `${BASE_URL}${BY_ID_ENDPOINT}/${id}?api_key=${API_KEY}&language=${LANGUAGE}`
+    `${BY_ID_ENDPOINT}/${id}?api_key=${API_KEY}&language=${LANGUAGE}`
   );
   return response.data;
 }
@@ -73,7 +73,7 @@ async function fetchMovieById(id) {
  */
 async function fetchMovieCastById(id) {
   const response = await axios.get(
-    `${BASE_URL}${BY_ID_ENDPOINT}/${id}/credits?api_key=${API_KEY}&language=${LANGUAGE}`
+    `${BY_ID_ENDPOINT}/${id}/credits?api_key=${API_KEY}&language=${LANGUAGE}`
   );
   return response.data;
 }
@@ -84,7 +84,7 @@ async function fetchMovieCastById(id) {
  */
 async function fetchMovieReviewsById(id) {
   const response = await axios.get(
-    `${BASE_URL}${BY_ID_ENDPOINT}/${id}/reviews?api_key=${API_KEY}&language=${LANGUAGE}`
+    `${BY_ID_ENDPOINT}/${id}/reviews?api_key=${API_KEY}&language=${LANGUAGE}`
   );
   return response.data;
 }
@@ -97,7 +97,7 @@ async function fetchMovieReviewsById(id) {
  */
 async function fetchMovieBySearchQuery(searchQuery, page = 1) {
   const response = await axios.get(
-    `${BASE_URL}${SEARCH_QUERY_ENDPOINT}?query=${searchQuery}&api_key=${API_KEY}&page=${page}&include_adult=${ADULT}&language=${LANGUAGE}`
+    `${SEARCH_QUERY_ENDPOINT}?query=${searchQuery}&api_key=${API_KEY}&page=${page}&include_adult=${ADULT}&language=${LANGUAGE}`
   );
   return response.data;
 }
@@ -111,7 +111,7 @@ async function fetchMovieBySearchQuery(searchQuery, page = 1) {
  */
 async function fetchMovieBySearchQueryAndYear(searchQuery, year, page = 1) {
   const response = await axios.get(
-    `${BASE_URL}${SEARCH_QUERY_ENDPOINT}?query=${searchQuery}&primary_release_year=${year}&page=${page}&api_key=${API_KEY}&include_adult=${ADULT}&language=${LANGUAGE}`
+    `${SEARCH_QUERY_ENDPOINT}?query=${searchQuery}&primary_release_year=${year}&page=${page}&api_key=${API_KEY}&include_adult=${ADULT}&language=${LANGUAGE}`
   );
   return response.data;
 }
@@ -123,7 +123,7 @@ async function fetchMovieBySearchQueryAndYear(searchQuery, year, page = 1) {
  */
 async function fetchMovieVideosById(id) {
   const response = await axios.get(
-    `${BASE_URL}${BY_ID_ENDPOINT}/${id}/videos?api_key=${API_KEY}&language=${LANGUAGE}`
+    `${BY_ID_ENDPOINT}/${id}/videos?api_key=${API_KEY}&language=${LANGUAGE}`
   );
   return response.data;
 }
@@ -135,7 +135,7 @@ async function fetchMovieVideosById(id) {
  */
 async function fetchGenresList() {
   const response = await axios.get(
-    `${BASE_URL}${GENRE_ENDPOINT}?api_key=${API_KEY}&language=${LANGUAGE}`
+    `${GENRE_ENDPOINT}?api_key=${API_KEY}&language=${LANGUAGE}`
   );
   return response.data;
 }
