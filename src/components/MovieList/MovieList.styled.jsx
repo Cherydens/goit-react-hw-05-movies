@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 
 export const MovieListStyled = styled.ul`
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+
   flex-direction: column;
   gap: 8px;
   padding: 8px;

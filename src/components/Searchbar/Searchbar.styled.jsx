@@ -5,12 +5,12 @@ export const SearchForm = styled.form`
   display: flex;
   align-items: center;
   width: 100%;
-  min-width: 500px;
+  min-width: 320px;
   max-width: 600px;
   background-color: #fff;
   border-radius: 3px;
   overflow: hidden;
-  outline: auto;
+  border: 1px solid #111;
   margin-bottom: 12px;
 `;
 
@@ -26,7 +26,6 @@ export const SearchFormButton = styled.button`
   opacity: 0.6;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  outline: none;
 
   &:hover {
     opacity: 1;

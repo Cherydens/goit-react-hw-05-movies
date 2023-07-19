@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   SearchForm,
@@ -38,3 +39,6 @@ export default function Searchbar({ setSearchParams }) {
     </SearchForm>
   );
 }
+Searchbar.propTypes = {
+  setSearchParams: PropTypes.func.isRequired,
+};

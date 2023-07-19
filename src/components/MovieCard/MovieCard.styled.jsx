@@ -10,10 +10,12 @@ export const MovieCardContainer = styled.div`
 
 export const MovieCardPosterContainer = styled.div`
   max-width: 180px;
+  flex-basis: 50%;
 `;
 
 export const MovieCardInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  flex-basis: 50%;
 `;

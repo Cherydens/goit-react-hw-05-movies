@@ -38,9 +38,12 @@ export default function MovieDetails() {
   return (
     <>
       {status === 'pending' && <Loader />}
+      {(status === 'resolved' ||
+        status === 'notFound' ||
+        status === 'rejected') && <GoBackLink to={backLink} />}
+
       {status === 'resolved' && (
         <>
-          <GoBackLink to={backLink} />
           <MovieCard movie={movie} />
           <MovieNav />
           <Suspense fallback={<Loader />}>
@@ -50,13 +53,11 @@ export default function MovieDetails() {
       )}
       {status === 'notFound' && (
         <div>
-          <GoBackLink to={backLink} />
           <h2>Movie not found.</h2>
         </div>
       )}
       {status === 'rejected' && (
         <div>
-          <GoBackLink to={backLink} />
           <h2>Ooops...... Something went wrong!</h2>
         </div>
       )}

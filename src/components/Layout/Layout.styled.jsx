@@ -6,6 +6,10 @@ export const Container = styled.div`
   align-items: center;
   gap: 8px;
   width: 100%;
-  min-width: 500px;
   padding-bottom: 24px;
+`;
+
+export const Main = styled.main`
+  min-width: 100%;
+  padding: 0 24px;
 `;

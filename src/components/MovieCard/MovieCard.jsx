@@ -1,5 +1,5 @@
+import PropTypes from 'prop-types';
 import noPhoto from '../../images/no-photo.jpg';
-
 import {
   MovieCardContainer,
   MovieCardInfoContainer,
@@ -34,3 +34,14 @@ export default function MovieCard({
     </MovieCardContainer>
   );
 }
+
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number,
+    overview: PropTypes.string,
+    genres: PropTypes.array,
+  }).isRequired,
+};
