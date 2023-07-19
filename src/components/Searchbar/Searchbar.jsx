@@ -6,11 +6,9 @@ import {
   SearchFormButtonLabel,
   SearchFormInput,
 } from './Searchbar.styled';
-import { useSearchParams } from 'react-router-dom';
 
-export default function Searchbar() {
+export default function Searchbar({ setSearchParams }) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [, setSearchParams] = useSearchParams();
 
   const onSearchQueryChange = e => {
     setSearchQuery(e.target.value);

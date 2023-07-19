@@ -1,3 +1,5 @@
+import noPhoto from '../../images/no-photo.jpg';
+
 import {
   MovieCardContainer,
   MovieCardInfoContainer,
@@ -11,7 +13,11 @@ export default function MovieCard({
     <MovieCardContainer>
       <MovieCardPosterContainer>
         <img
-          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          src={
+            poster_path
+              ? `https://image.tmdb.org/t/p/w500${poster_path}`
+              : noPhoto
+          }
           alt={title}
         />
       </MovieCardPosterContainer>

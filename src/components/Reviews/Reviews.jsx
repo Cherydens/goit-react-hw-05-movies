@@ -6,6 +6,7 @@ import {
   ReviewsContainer,
   ReviewsTitle,
 } from './Reviews.styled';
+import Loader from 'components/Loader/Loader';
 
 export default function Reviews() {
   const { movieId } = useParams();
@@ -36,6 +37,7 @@ export default function Reviews() {
 
   return (
     <>
+      {status === 'pending' && <Loader />}
       {status === 'resolved' && (
         <ReviewsContainer>
           {reviews.map(({ id, author, content }) => (
@@ -51,6 +53,7 @@ export default function Reviews() {
           We don't have any reviews for this movie.
         </NoReviewsContainer>
       )}
+      {status === 'rejected' && <div>Ooops...... Something went wrong!</div>}
     </>
   );
 }

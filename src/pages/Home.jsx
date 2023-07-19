@@ -1,3 +1,4 @@
+import Loader from 'components/Loader/Loader';
 import MovieList from 'components/MovieList/MovieList';
 import { useEffect, useState } from 'react';
 import { fetchDayTrends } from 'services/movieApiService';
@@ -28,9 +29,15 @@ export default function Home() {
 
   return (
     <>
-      <h1>Trending today</h1>
-      {status === 'resolved' && <MovieList movies={dayTrends} />}
+      {status === 'pending' && <Loader />}
+      {status === 'resolved' && (
+        <>
+          <h1>Trending today</h1>
+          <MovieList movies={dayTrends} />
+        </>
+      )}
       {status === 'notFound' && <div>We don't have any today trends.</div>}
+      {status === 'rejected' && <div>Ooops...... Something went wrong!</div>}
     </>
   );
 }

@@ -1,3 +1,4 @@
+import Loader from 'components/Loader/Loader';
 import MovieList from 'components/MovieList/MovieList';
 import Searchbar from 'components/Searchbar/Searchbar';
 import { useEffect, useState } from 'react';
@@ -7,7 +8,7 @@ import { fetchMovieBySearchQuery } from 'services/movieApiService';
 export default function Movies() {
   const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState('idle');
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const queryMovie = searchParams.get('query') ?? '';
@@ -34,15 +35,17 @@ export default function Movies() {
     };
 
     getMovieBySearchQuery(queryMovie);
-  }, [searchParams]);
+  }, [searchParams, setMovies]);
 
   return (
     <>
-      <Searchbar />
+      <Searchbar setSearchParams={setSearchParams} />
+      {status === 'pending' && <Loader />}
       {status === 'resolved' && <MovieList movies={movies} />}
       {status === 'notFound' && (
         <div>We don't have any results by your search query.</div>
       )}
+      {status === 'rejected' && <div>Ooops...... Something went wrong!</div>}
     </>
   );
 }

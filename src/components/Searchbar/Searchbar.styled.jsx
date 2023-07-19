@@ -5,6 +5,7 @@ export const SearchForm = styled.form`
   display: flex;
   align-items: center;
   width: 100%;
+  min-width: 500px;
   max-width: 600px;
   background-color: #fff;
   border-radius: 3px;

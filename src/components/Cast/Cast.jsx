@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { fetchMovieCastById } from 'services/movieApiService';
 import { CastCard, CastContainer, NoCastContainer } from './Cast.styled';
 import noPhoto from '../../images/no-photo.jpg';
+import Loader from 'components/Loader/Loader';
 
 export default function Cast() {
   const { movieId } = useParams();
@@ -33,6 +34,7 @@ export default function Cast() {
 
   return (
     <>
+      {status === 'pending' && <Loader />}
       {status === 'resolved' && (
         <CastContainer>
           {cast.map(({ credit_id, name, profile_path, character }) => (
@@ -57,6 +59,7 @@ export default function Cast() {
           We don't have any cast for this movie.
         </NoCastContainer>
       )}
+      {status === 'rejected' && <div>Ooops...... Something went wrong!</div>}
     </>
   );
 }
