@@ -8,7 +8,7 @@ import { fetchMovieBySearchQuery } from 'services/movieApiService';
 export default function Movies() {
   const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState('idle');
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     const queryMovie = searchParams.get('query') ?? '';
@@ -39,7 +39,7 @@ export default function Movies() {
 
   return (
     <>
-      <Searchbar setSearchParams={setSearchParams} />
+      <Searchbar />
       {status === 'pending' && <Loader />}
       {status === 'resolved' && <MovieList movies={movies} />}
       {status === 'notFound' && (

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 
 import {
   SearchForm,
@@ -7,9 +6,11 @@ import {
   SearchFormButtonLabel,
   SearchFormInput,
 } from './Searchbar.styled';
+import { useSearchParams } from 'react-router-dom';
 
-export default function Searchbar({ setSearchParams }) {
+export default function Searchbar() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [, setSearchParams] = useSearchParams();
 
   const onSearchQueryChange = e => {
     setSearchQuery(e.target.value);
@@ -39,6 +40,3 @@ export default function Searchbar({ setSearchParams }) {
     </SearchForm>
   );
 }
-Searchbar.propTypes = {
-  setSearchParams: PropTypes.func.isRequired,
-};
