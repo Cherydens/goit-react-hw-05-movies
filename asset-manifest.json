@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/goit-react-hw-05-movies/static/css/main.ad88de3d.css",
-    "main.js": "/goit-react-hw-05-movies/static/js/main.9c3c4e7e.js",
+    "main.js": "/goit-react-hw-05-movies/static/js/main.ad6eb656.js",
     "static/js/415.ec7979f2.chunk.js": "/goit-react-hw-05-movies/static/js/415.ec7979f2.chunk.js",
-    "static/js/212.9ce97359.chunk.js": "/goit-react-hw-05-movies/static/js/212.9ce97359.chunk.js",
+    "static/js/212.90f432bc.chunk.js": "/goit-react-hw-05-movies/static/js/212.90f432bc.chunk.js",
     "static/js/877.9db4947b.chunk.js": "/goit-react-hw-05-movies/static/js/877.9db4947b.chunk.js",
     "static/js/736.ea727ce0.chunk.js": "/goit-react-hw-05-movies/static/js/736.ea727ce0.chunk.js",
     "static/js/387.b263c661.chunk.js": "/goit-react-hw-05-movies/static/js/387.b263c661.chunk.js",
@@ -13,9 +13,9 @@
     "static/media/search-icon.svg": "/goit-react-hw-05-movies/static/media/search-icon.dcc917b4aaedba50220f7e8a520b49a2.svg",
     "index.html": "/goit-react-hw-05-movies/index.html",
     "main.ad88de3d.css.map": "/goit-react-hw-05-movies/static/css/main.ad88de3d.css.map",
-    "main.9c3c4e7e.js.map": "/goit-react-hw-05-movies/static/js/main.9c3c4e7e.js.map",
+    "main.ad6eb656.js.map": "/goit-react-hw-05-movies/static/js/main.ad6eb656.js.map",
     "415.ec7979f2.chunk.js.map": "/goit-react-hw-05-movies/static/js/415.ec7979f2.chunk.js.map",
-    "212.9ce97359.chunk.js.map": "/goit-react-hw-05-movies/static/js/212.9ce97359.chunk.js.map",
+    "212.90f432bc.chunk.js.map": "/goit-react-hw-05-movies/static/js/212.90f432bc.chunk.js.map",
     "877.9db4947b.chunk.js.map": "/goit-react-hw-05-movies/static/js/877.9db4947b.chunk.js.map",
     "736.ea727ce0.chunk.js.map": "/goit-react-hw-05-movies/static/js/736.ea727ce0.chunk.js.map",
     "387.b263c661.chunk.js.map": "/goit-react-hw-05-movies/static/js/387.b263c661.chunk.js.map",
@@ -24,6 +24,6 @@
   },
   "entrypoints": [
     "static/css/main.ad88de3d.css",
-    "static/js/main.9c3c4e7e.js"
+    "static/js/main.ad6eb656.js"
   ]
 }
