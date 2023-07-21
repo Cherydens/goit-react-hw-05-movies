@@ -1,12 +1,11 @@
 import axios from 'axios';
 
-// const TOKEN =
-//   'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NTc5NmYxNzM4NzI3OTg1NWM3MjBiMjdmNDljMjVmMSIsInN1YiI6IjY0N2Y3MDYzNzFmZmRmMDEwYzg3YWIzOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9AzF80qawQzmYwfptJjDK5gSiKy9M6ZEOpq2I4PFWtg';
-const API_KEY = '55796f17387279855c720b27f49c25f1';
-const BASE_URL = 'https://api.themoviedb.org/3';
+// const API_KEY = '55796f17387279855c720b27f49c25f1';
 
-axios.defaults.baseURL = BASE_URL;
-axios.defaults.headers.common['Authorization'] = API_KEY;
+const AUTH_TOKEN =
+  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NTc5NmYxNzM4NzI3OTg1NWM3MjBiMjdmNDljMjVmMSIsInN1YiI6IjY0N2Y3MDYzNzFmZmRmMDEwYzg3YWIzOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9AzF80qawQzmYwfptJjDK5gSiKy9M6ZEOpq2I4PFWtg';
+
+const BASE_URL = 'https://api.themoviedb.org/3';
 
 const TRENDING_DAY_ENDPOINT = '/trending/movie/day';
 const TRENDING_WEEK_ENDPOINT = '/trending/movie/week';
@@ -18,16 +17,23 @@ const GENRE_ENDPOINT = '/genre/movie/list';
 const LANGUAGE = 'en-US';
 const ADULT = 'false';
 
+axios.defaults.baseURL = BASE_URL;
+axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+axios.defaults.params = { language: LANGUAGE };
+
 /**
  * Отримує трендові фільми дня
  * @param {String || Number} page
  * @returns {Promise} response data
  */
-async function fetchDayTrends(page = 1) {
-  const response = await axios.get(
-    `${TRENDING_DAY_ENDPOINT}?api_key=${API_KEY}&page=${page}&language=${LANGUAGE}`
-  );
-  return response.data;
+export async function fetchDayTrends(page = 1) {
+  const { data } = await axios({
+    url: TRENDING_DAY_ENDPOINT,
+    params: {
+      page,
+    },
+  });
+  return data;
 }
 
 /**
@@ -35,11 +41,14 @@ async function fetchDayTrends(page = 1) {
  * @param {String || Number} page
  * @returns {Promise} response data
  */
-async function fetchWeekTrends(page = 1) {
-  const response = await axios.get(
-    `${TRENDING_WEEK_ENDPOINT}?api_key=${API_KEY}&page=${page}&language=${LANGUAGE}`
-  );
-  return response.data;
+export async function fetchWeekTrends(page = 1) {
+  const { data } = await axios({
+    url: TRENDING_WEEK_ENDPOINT,
+    params: {
+      page,
+    },
+  });
+  return data;
 }
 
 /**
@@ -47,11 +56,14 @@ async function fetchWeekTrends(page = 1) {
  * @param {String || Number} page
  * @returns {Promise} response data
  */
-async function fetchUpcomingThisMonth(page = 1) {
-  const response = await axios.get(
-    `${UPCOMING_ENDPOINT}?api_key=${API_KEY}&page=${page}&language=${LANGUAGE}`
-  );
-  return response.data;
+export async function fetchUpcomingThisMonth(page = 1) {
+  const { data } = await axios({
+    url: UPCOMING_ENDPOINT,
+    params: {
+      page,
+    },
+  });
+  return data;
 }
 
 /**
@@ -59,11 +71,11 @@ async function fetchUpcomingThisMonth(page = 1) {
  * @param {String} id
  * @returns {Promise} response data
  */
-async function fetchMovieById(id) {
-  const response = await axios.get(
-    `${BY_ID_ENDPOINT}/${id}?api_key=${API_KEY}&language=${LANGUAGE}`
-  );
-  return response.data;
+export async function fetchMovieById(id) {
+  const { data } = await axios({
+    url: `${BY_ID_ENDPOINT}/${id}`,
+  });
+  return data;
 }
 
 /**
@@ -71,49 +83,61 @@ async function fetchMovieById(id) {
  * @param {String} id
  * @returns {Promise} response data
  */
-async function fetchMovieCastById(id) {
-  const response = await axios.get(
-    `${BY_ID_ENDPOINT}/${id}/credits?api_key=${API_KEY}&language=${LANGUAGE}`
-  );
-  return response.data;
+export async function fetchMovieCastById(id) {
+  const { data } = await axios({
+    url: `${BY_ID_ENDPOINT}/${id}/credits`,
+  });
+  return data;
 }
+
 /**
  * Отримує обзори до фільму за ID
  * @param {String} id
  * @returns {Promise} response data
  */
-async function fetchMovieReviewsById(id) {
-  const response = await axios.get(
-    `${BY_ID_ENDPOINT}/${id}/reviews?api_key=${API_KEY}&language=${LANGUAGE}`
-  );
-  return response.data;
+export async function fetchMovieReviewsById(id) {
+  const { data } = await axios({
+    url: `${BY_ID_ENDPOINT}/${id}/reviews`,
+  });
+  return data;
 }
 
 /**
  * Отримує фільми за пошуковим запитом
- * @param {String} searchQuery
+ * @param {String} query
  * @param {String || Number} page
  * @returns {Promise} response data
  */
-async function fetchMovieBySearchQuery(searchQuery, page = 1) {
-  const response = await axios.get(
-    `${SEARCH_QUERY_ENDPOINT}?query=${searchQuery}&api_key=${API_KEY}&page=${page}&include_adult=${ADULT}&language=${LANGUAGE}`
-  );
-  return response.data;
+export async function fetchMovieBySearchQuery(query, page = 1) {
+  const { data } = await axios({
+    url: SEARCH_QUERY_ENDPOINT,
+    params: { query, page, include_adult: ADULT },
+  });
+  return data;
 }
 
 /**
  * Отримує фільм за пошуковим запитом та роком
- * @param {String} searchQuery
- * @param {String || Number} year
+ * @param {String} query
+ * @param {String || Number} primary_release_year
  * @param {String || Number} page
  * @returns {Promise} response data
  */
-async function fetchMovieBySearchQueryAndYear(searchQuery, year, page = 1) {
-  const response = await axios.get(
-    `${SEARCH_QUERY_ENDPOINT}?query=${searchQuery}&primary_release_year=${year}&page=${page}&api_key=${API_KEY}&include_adult=${ADULT}&language=${LANGUAGE}`
-  );
-  return response.data;
+export async function fetchMovieBySearchQueryAndYear(
+  query,
+  primary_release_year,
+  page = 1
+) {
+  const { data } = await axios({
+    url: SEARCH_QUERY_ENDPOINT,
+    params: {
+      query,
+      page,
+      include_adult: ADULT,
+      primary_release_year,
+    },
+  });
+  return data;
 }
 
 /**
@@ -121,34 +145,20 @@ async function fetchMovieBySearchQueryAndYear(searchQuery, year, page = 1) {
  * @param {String} id
  * @returns {Promise} response data
  */
-async function fetchMovieVideosById(id) {
-  const response = await axios.get(
-    `${BY_ID_ENDPOINT}/${id}/videos?api_key=${API_KEY}&language=${LANGUAGE}`
-  );
-  return response.data;
+export async function fetchMovieVideosById(id) {
+  const { data } = await axios({
+    url: `${BY_ID_ENDPOINT}/${id}/videos`,
+  });
+  return data;
 }
 
 /**
  * Отримує перелік жанрів
  * @returns {Promise} response data
-
  */
-async function fetchGenresList() {
-  const response = await axios.get(
-    `${GENRE_ENDPOINT}?api_key=${API_KEY}&language=${LANGUAGE}`
-  );
-  return response.data;
+export async function fetchGenresList() {
+  const { data } = await axios({
+    url: GENRE_ENDPOINT,
+  });
+  return data;
 }
-
-export {
-  fetchDayTrends,
-  fetchWeekTrends,
-  fetchUpcomingThisMonth,
-  fetchMovieById,
-  fetchMovieBySearchQuery,
-  fetchMovieBySearchQueryAndYear,
-  fetchMovieVideosById,
-  fetchGenresList,
-  fetchMovieCastById,
-  fetchMovieReviewsById,
-};
